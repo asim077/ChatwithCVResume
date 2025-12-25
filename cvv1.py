@@ -290,17 +290,6 @@ def require_api_key():
 @app.get("/")
 def frontend():
     return FileResponse("index.html")
-@app.get("/")
-def welcome():
-    return {
-        "message": "Welcome to Chat with CV API 🚀",
-        "steps": [
-            "1. POST /set-api-key",
-            "2. POST /upload-cv",
-            "3. POST /ask"
-        ]
-    }
-
 
 @app.post("/set-api-key")
 def set_api_key(request: APIKeyRequest):
