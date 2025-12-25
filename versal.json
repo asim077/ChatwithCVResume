@@ -1,29 +1,15 @@
 {
-  "name": "chat-with-cv",
-  "version": "1.0.0",
-  "type": "python",
-  "description": "Chat with CV API using FastAPI + Gemini embeddings",
-  "entrypoint": "main.py",
-  "start_command": "uvicorn main:app --host 0.0.0.0 --port $PORT",
-  "ports": [
+  "builds": [
     {
-      "port": 8000,
-      "protocol": "http"
+      "src": "api/cvv1.py",
+      "use": "@vercel/python"
     }
   ],
-  "dependencies": [
-    "fastapi",
-    "uvicorn",
-    "python-multipart",
-    "sentence-transformers",
-    "langchain-text-splitters",
-    "pymupdf4llm",
-    "google-generativeai"
-  ],
-  "env": {
-    "GENAI_API_KEY": {
-      "description": "Gemini API Key",
-      "required": true
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "api/cvv1.py"
     }
-  }
+  ]
 }
+
