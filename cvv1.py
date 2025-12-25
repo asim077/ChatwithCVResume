@@ -287,7 +287,9 @@ def require_api_key():
             detail="API key not set. Please insert API key first."
         )
 
-
+@app.get("/")
+def frontend():
+    return FileResponse("index.html")
 @app.get("/")
 def welcome():
     return {
